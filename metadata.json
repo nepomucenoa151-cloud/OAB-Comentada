@@ -1,0 +1,8 @@
+{
+  "name": "OAB Comentada",
+  "description": "Método estratégico para aprovação na OAB focando no que realmente cai na prova através de questões comentadas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
