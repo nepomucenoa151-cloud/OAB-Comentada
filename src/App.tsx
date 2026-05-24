@@ -62,14 +62,18 @@ export default function App() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
             >
               <a 
                 href="#oferta" 
-                className="bg-brand-accent hover:opacity-90 transition-all px-8 py-5 rounded-xl font-bold flex items-center justify-center gap-2 text-lg shadow-2xl shadow-brand-accent/30 group"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("oferta")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="bg-brand-accent hover:opacity-95 active:scale-[0.98] transition-all px-5 sm:px-8 py-4 sm:py-5 rounded-2xl font-extrabold flex items-center justify-center gap-2 text-base sm:text-lg md:text-xl shadow-2xl shadow-brand-accent/30 group w-full sm:w-auto text-center leading-tight tracking-wide"
               >
-                QUERO MEU ACESSO AGORA
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <span className="truncate sm:overflow-visible">QUERO MEU ACESSO AGORA</span>
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform shrink-0" />
               </a>
             </motion.div>
           </div>
@@ -171,7 +175,7 @@ export default function App() {
           <FadeIn>
             <div className="text-center mb-10">
               <h3 className="font-display text-2xl md:text-3xl font-extrabold text-[#d7ff00] flex items-center justify-center gap-2 italic">
-                <span>📚 SENDO ELAS:</span>
+                <span>📚Máterias:</span>
               </h3>
             </div>
           </FadeIn>
@@ -302,7 +306,7 @@ export default function App() {
                     href="https://pay.hotmart.com" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="block w-full bg-brand-primary text-brand-dark hover:opacity-90 transition-all py-5 rounded-2xl font-extrabold text-xl shadow-xl"
+                    className="block w-full bg-brand-primary text-brand-dark hover:opacity-95 active:scale-[0.98] transition-all py-4 sm:py-5 rounded-2xl font-black text-lg sm:text-xl shadow-xl uppercase tracking-wider text-center"
                   >
                     APROVEITAR AGORA
                   </a>
@@ -395,7 +399,7 @@ export default function App() {
                     href="https://pay.hotmart.com" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="block w-full bg-brand-accent hover:opacity-90 transition-all py-5 rounded-2xl font-extrabold text-xl shadow-xl shadow-brand-accent/20"
+                    className="block w-full bg-brand-accent hover:opacity-95 active:scale-[0.98] transition-all py-4 sm:py-5 rounded-2xl font-black text-lg sm:text-xl shadow-xl shadow-brand-accent/20 uppercase tracking-wider text-center"
                   >
                     QUERO MINHA APROVAÇÃO
                   </a>
