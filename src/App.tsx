@@ -37,7 +37,7 @@ export default function App() {
               transition={{ duration: 0.8 }}
               className="flex items-center gap-2 mb-6"
             >
-              <div className="font-display font-extrabold text-4xl md:text-5xl text-brand-primary">OAB <span className="text-white">Comentada</span></div>
+              <div className="font-display font-extrabold text-4xl md:text-5xl text-brand-primary">OAB <span className="text-white">HACKEADA</span></div>
             </motion.div>
 
             <motion.h1 
@@ -128,7 +128,7 @@ export default function App() {
                 CONTEÚDO COMPLETO
               </span>
               <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
-                O QUE VOCÊ RECEBE NO <span className="text-[#d7ff00]">OAB COMENTADA</span>
+                O QUE VOCÊ RECEBE NO <span className="text-[#d7ff00]">OAB HACKEADA</span>
               </h2>
             </div>
           </FadeIn>
@@ -236,7 +236,7 @@ export default function App() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <FadeIn>
               <h2 className="font-display text-4xl md:text-6xl font-extrabold text-brand-primary leading-tight">
-                PARA QUEM É O OAB COMENTADA:
+                PARA QUEM É O OAB HACKEADA:
               </h2>
             </FadeIn>
             
@@ -470,7 +470,7 @@ export default function App() {
       {/* Footer */}
       <footer className="py-12 border-t border-white/5 text-center px-6">
         <div className="container mx-auto">
-          <div className="font-display font-bold text-2xl text-brand-primary mb-4">OAB <span className="text-white">Comentada</span></div>
+          <div className="font-display font-bold text-2xl text-brand-primary mb-4">OAB <span className="text-white">HACKEADA</span></div>
           <p className="text-gray-500 mb-6">© 2026 — Todos os direitos reservados.</p>
           <div className="flex justify-center gap-8 text-sm text-gray-600">
             <a href="#" className="hover:text-white transition-colors">Termos de Uso</a>
