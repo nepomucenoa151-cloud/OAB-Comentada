@@ -303,9 +303,9 @@ export default function App() {
                   </div>
                   <p className="text-gray-400 mb-8 font-medium">Lote Especial</p>
                   <a 
-                    href="https://pay.hotmart.com" 
+                    href="https://pay.wiapy.com/eqnm5Fa3To" 
                     target="_blank" 
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="block w-full bg-brand-primary text-brand-dark hover:opacity-95 active:scale-[0.98] transition-all py-4 sm:py-5 rounded-2xl font-black text-lg sm:text-xl shadow-xl uppercase tracking-wider text-center"
                   >
                     APROVEITAR AGORA
@@ -396,9 +396,9 @@ export default function App() {
                   </div>
                   <p className="text-gray-400 mb-8 font-medium">Pagamento Único — Completo</p>
                   <a 
-                    href="https://pay.hotmart.com" 
+                    href="https://pay.wiapy.com/ZKQs_w7h-E" 
                     target="_blank" 
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="block w-full bg-brand-accent hover:opacity-95 active:scale-[0.98] transition-all py-4 sm:py-5 rounded-2xl font-black text-lg sm:text-xl shadow-xl shadow-brand-accent/20 uppercase tracking-wider text-center"
                   >
                     QUERO MINHA APROVAÇÃO
