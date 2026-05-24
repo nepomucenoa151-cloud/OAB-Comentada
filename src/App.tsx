@@ -192,7 +192,7 @@ export default function App() {
               { emoji: "🏢", name: "Administrativo", count: "40+ questões" },
               { emoji: "💰", name: "Tributário", count: "35+ questões" },
               { emoji: "📖", name: "Ética + Estatuto", count: "80+ questões" },
-              { emoji: "🏠", name: "Empresarial", count: "30+ questões", description: "PDF com análise das disciplinas, mapa estratégico e questões comentadas por especialistas." }
+              { emoji: "🏠", name: "Empresarial", count: "30+ questões", description: "PDF com análise das disciplinas, mapa visual e estratégico e questões comentadas por especialistas." }
             ].map((subject, i) => (
               <FadeIn key={i} delay={0.05 * i} className={subject.description ? "sm:col-span-2 lg:col-span-3" : ""}>
                 <div className="bg-white/5 border border-white/5 hover:border-[#d7ff00]/20 hover:bg-white/10 transition-all duration-300 px-6 py-5 rounded-2xl flex flex-col justify-between h-full">
@@ -371,10 +371,10 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* Mapas Estratégicos & Extras */}
+                {/* Mapas Visuais e Estratégicos & Extras */}
                 <div className="bg-brand-dark/5 p-6 rounded-2xl border border-brand-dark/10 space-y-4 text-brand-dark">
                   <div>
-                    <h4 className="font-bold text-base mb-1">🗺️ Mapas Estratégicos:</h4>
+                    <h4 className="font-bold text-base mb-1">🗺️ Mapas Visuais e Estratégicos:</h4>
                     <p className="text-sm md:text-base font-medium opacity-90">Direito penal, Trabalhista, direito empresarial, Direitos constitucionais e Humanos</p>
                   </div>
                   <div className="flex flex-col sm:flex-row gap-4 justify-between pt-4 border-t border-brand-dark/10 font-bold">
