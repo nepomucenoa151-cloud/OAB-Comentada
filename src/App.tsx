@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react";
-import { motion } from "motion/react";
-import { CheckCircle2, ChevronRight, GraduationCap, BookOpen, Target, ArrowRight, ShieldCheck } from "lucide-react";
+import React, { ReactNode, useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { CheckCircle2, ChevronRight, GraduationCap, BookOpen, Target, ArrowRight, ShieldCheck, X } from "lucide-react";
 
 const FadeIn = ({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string; key?: React.Key }) => (
   <motion.div
@@ -15,6 +15,8 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: ReactNode; 
 );
 
 export default function App() {
+  const [showOfferModal, setShowOfferModal] = useState(false);
+
   return (
     <div className="bg-brand-dark text-white min-h-screen font-sans selection:bg-brand-primary selection:text-brand-dark">
       {/* Hero Section */}
@@ -302,14 +304,12 @@ export default function App() {
                     <span className="text-8xl md:text-9xl font-extrabold text-brand-primary leading-none">10</span>
                   </div>
                   <p className="text-gray-400 mb-8 font-medium">Lote Especial</p>
-                  <a 
-                    href="https://pay.wiapy.com/eqnm5Fa3To" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="block w-full bg-brand-primary text-brand-dark hover:opacity-95 active:scale-[0.98] transition-all py-4 sm:py-5 rounded-2xl font-black text-lg sm:text-xl shadow-xl uppercase tracking-wider text-center"
+                  <button 
+                    onClick={() => setShowOfferModal(true)}
+                    className="block w-full bg-brand-primary text-brand-dark hover:opacity-95 active:scale-[0.98] transition-all py-4 sm:py-5 rounded-2xl font-black text-lg sm:text-xl shadow-xl uppercase tracking-wider text-center cursor-pointer"
                   >
                     APROVEITAR AGORA
-                  </a>
+                  </button>
                 </div>
               </FadeIn>
             </div>
@@ -479,6 +479,143 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* Modal - Oferta Exclusiva */}
+      <AnimatePresence>
+        {showOfferModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowOfferModal(false)}
+              className="fixed inset-0 bg-black/90 backdrop-blur-md cursor-pointer"
+            />
+
+            {/* Modal Body */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: "spring", duration: 0.5 }}
+              className="bg-brand-dark border-2 border-[#d7ff00]/30 rounded-[2.5rem] w-full max-w-2xl overflow-hidden shadow-2xl relative text-white z-10 max-h-[90vh] flex flex-col"
+            >
+              {/* Top Warning Banner */}
+              <div className="bg-[#d7ff00] text-brand-dark px-6 py-3 font-extrabold text-xs md:text-sm uppercase tracking-widest text-center flex items-center justify-center gap-2">
+                <span>🚨</span> OPORTUNIDADE ÚNICA E EXCLUSIVA!
+              </div>
+
+              {/* Close Button */}
+              <button 
+                onClick={() => setShowOfferModal(false)}
+                className="absolute top-14 right-6 text-gray-400 hover:text-white hover:bg-white/10 p-2 rounded-full transition-all cursor-pointer z-20"
+                aria-label="Fechar"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              <div className="p-6 md:p-10 overflow-y-auto scrollbar-thin scrollbar-thumb-white/10">
+                <div className="text-center mb-8">
+                  <span className="text-[#d7ff00] font-black text-xs md:text-sm tracking-widest uppercase bg-[#d7ff00]/10 px-4 py-1.5 rounded-full border border-[#d7ff00]/20">
+                    SÓ NESTA PÁGINA
+                  </span>
+                  <h3 className="font-display text-2xl md:text-4xl font-black mt-4 leading-tight">
+                    Leve o <span className="text-[#d7ff00]">PACOTE COMPLETO</span> por apenas <span className="text-[#d7ff00]">R$ 27,00</span>!
+                  </h3>
+                  <p className="text-gray-300 mt-2 font-medium text-sm md:text-base">
+                    Por apenas <span className="text-[#d7ff00] font-bold">R$ 17,00 a mais</span> do que o básico, garanta o método completo definitivo para sua aprovação.
+                  </p>
+                </div>
+
+                {/* Benefits List */}
+                <div className="space-y-4 bg-white/5 p-6 rounded-2xl border border-white/5 mb-8">
+                  <h4 className="font-bold text-[#d7ff00] text-sm uppercase tracking-wider mb-2">🎁 Benefícios Inclusos (Os mesmos do pacote de R$ 37):</h4>
+                  
+                  <div className="space-y-4 text-sm md:text-base">
+                    {/* Item 1 */}
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-[#d7ff00] shrink-0 mt-0.5" />
+                      <div>
+                        <p className="font-bold text-white">500 Questões Comentadas (Matérias Incluídas):</p>
+                        <p className="text-gray-400 text-xs md:text-sm mt-1 leading-relaxed">
+                          Ética profissional, Dir. Constitucional, Direito Civil, Direito Penal, Dir. do Trabalho, Processual Civil, Processual Penal, Dir. Administrativo, Dir. Tributário, Dir. Empresarial.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Item 2 */}
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-[#d7ff00] shrink-0 mt-0.5" />
+                      <div>
+                        <p className="font-bold text-white">Bônus Exclusivos:</p>
+                        <p className="text-gray-400 text-xs md:text-sm mt-1">
+                          Cronograma 60 dias até a prova, Resumão Top 10 Assuntos mais cobrados, Modelo de Peça Profissional e Guia anti pegadinha FGV.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Item 3 */}
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-[#d7ff00] shrink-0 mt-0.5" />
+                      <div>
+                        <p className="font-bold text-white">Mapas Visuais e Estratégicos:</p>
+                        <p className="text-gray-400 text-xs md:text-sm mt-1">
+                          Direito penal, Trabalhista, direito empresarial, Direitos constitucionais e Humanos.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Item 4 */}
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-[#d7ff00] shrink-0 mt-0.5" />
+                      <div>
+                        <p className="font-bold text-white">Plano de Estudo Acelerado + Bônus Extra</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Price block & CTA */}
+                <div className="text-center space-y-6">
+                  <div>
+                    <span className="text-gray-500 line-through text-sm md:text-base mr-3">DE R$ 197,00</span>
+                    <span className="text-gray-400 line-through text-xs md:text-sm mr-3">OU R$ 37,00</span>
+                    <div className="flex justify-center items-start mt-2">
+                      <span className="text-xl md:text-2xl font-bold mt-1 text-[#d7ff00]">R$</span>
+                      <span className="text-6xl md:text-7xl font-extrabold text-[#d7ff00] leading-none">27</span>
+                      <span className="text-sm md:text-base font-bold text-gray-300 self-end ml-1 mb-1">PAGAMENTO ÚNICO</span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    {/* Primary Button for discount */}
+                    <a 
+                      href="https://pay.wiapy.com/rg85iH1OSm" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="block w-full bg-[#d7ff00] text-brand-dark hover:opacity-95 active:scale-[0.98] transition-all py-4 sm:py-5 rounded-2xl font-black text-lg sm:text-xl shadow-xl shadow-[#d7ff00]/20 uppercase tracking-wider text-center"
+                    >
+                      QUERO O PACOTE COMPLETO POR R$ 27
+                    </a>
+
+                    {/* Basic option */}
+                    <a 
+                      href="https://pay.wiapy.com/eqnm5Fa3To"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setShowOfferModal(false)}
+                      className="block w-full text-gray-400 hover:text-white transition-colors py-2 text-xs md:text-sm text-center underline font-medium"
+                    >
+                      Não, quero continuar apenas com o Pacote Básico por R$ 10,00
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
