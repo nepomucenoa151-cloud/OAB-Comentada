@@ -31,53 +31,96 @@ export default function App() {
           <div className="absolute inset-0 bg-linear-to-r from-brand-dark via-brand-dark/90 to-brand-dark/40" />
         </div>
 
-        <div className="container mx-auto px-6 md:px-12 relative z-10 py-20">
-          <div className="max-w-3xl">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="flex items-center gap-2 mb-6"
-            >
-              <div className="font-display font-extrabold text-4xl md:text-5xl text-brand-primary">OAB <span className="text-white">HACKEADA</span></div>
-            </motion.div>
-
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="font-display text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-8"
-            >
-              Garanta <span className="text-brand-primary">50+ pontos</span> na prova da 1ª fase: O método prático com mais de <span className="text-brand-primary underline decoration-brand-accent">500 questões comentadas</span> para sua aprovação.
-            </motion.h1>
-
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl"
-            >
-              Descubra o padrão da banca FGV, aprenda o que realmente cai na prova e estude de forma inteligente mesmo com pouco tempo.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
-            >
-              <a 
-                href="#oferta" 
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("oferta")?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="bg-brand-accent hover:opacity-95 active:scale-[0.98] transition-all px-5 sm:px-8 py-4 sm:py-5 rounded-2xl font-extrabold flex items-center justify-center gap-2 text-base sm:text-lg md:text-xl shadow-2xl shadow-brand-accent/30 group w-full sm:w-auto text-center leading-tight tracking-wide"
+        <div className="container mx-auto px-6 md:px-12 relative z-10 py-12 lg:py-20">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            {/* Left Column (Text & CTA) */}
+            <div className="lg:col-span-7 flex flex-col justify-center">
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                className="flex items-center gap-2 mb-6 self-start"
               >
-                <span className="truncate sm:overflow-visible">QUERO MEU ACESSO AGORA</span>
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform shrink-0" />
-              </a>
-            </motion.div>
+                <div className="bg-[#d7ff00] text-black font-display font-black text-3xl md:text-4xl px-5 py-2 uppercase tracking-wide inline-block shadow-lg">OAB HACKEADA</div>
+              </motion.div>
+
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight mb-6"
+              >
+                Garanta <span className="text-brand-primary">50+ pontos</span> na prova da 1ª fase: O método prático com mais de <span className="text-brand-primary underline decoration-brand-accent">500 questões comentadas</span> para sua aprovação.
+              </motion.h1>
+
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed"
+              >
+                Descubra o padrão da banca FGV, aprenda o que realmente cai na prova e estude de forma inteligente mesmo com pouco tempo.
+              </motion.p>
+
+              {/* Video visible ONLY on mobile (below description, above CTA) to ensure extreme visibility */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="block lg:hidden w-full mb-8"
+              >
+                <div className="max-w-[280px] sm:max-w-[320px] mx-auto p-2.5 bg-white/5 border border-white/10 rounded-[2.5rem] shadow-2xl">
+                  <div className="relative aspect-[9/16] w-full rounded-[2rem] overflow-hidden bg-black">
+                    <iframe 
+                      src="https://drive.google.com/file/d/1GtURxCVFlquxX3GDnUKFn2Pp4Q8mDkT7/preview" 
+                      className="absolute inset-0 w-full h-full border-0"
+                      allow="autoplay; encrypted-media"
+                      allowFullScreen
+                      title="Vídeo de Apresentação OAB Hackeada"
+                    />
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+              >
+                <a 
+                  href="#oferta" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById("oferta")?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="bg-brand-accent hover:opacity-95 active:scale-[0.98] transition-all px-5 sm:px-8 py-4 sm:py-5 rounded-2xl font-extrabold flex items-center justify-center gap-2 text-base sm:text-lg md:text-xl shadow-2xl shadow-brand-accent/30 group w-full sm:w-auto text-center leading-tight tracking-wide"
+                >
+                  <span className="truncate sm:overflow-visible">QUERO MEU ACESSO AGORA</span>
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform shrink-0" />
+                </a>
+              </motion.div>
+            </div>
+
+            {/* Right Column - Video visible ONLY on desktop (lg:block) */}
+            <div className="hidden lg:flex lg:col-span-5 w-full justify-center">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="w-full max-w-[320px] p-3 bg-white/5 border border-white/10 rounded-[2.5rem] shadow-2xl bg-linear-to-b from-white/5 to-transparent"
+              >
+                <div className="relative aspect-[9/16] w-full rounded-[2rem] overflow-hidden bg-black shadow-inner">
+                  <iframe 
+                    src="https://drive.google.com/file/d/1GtURxCVFlquxX3GDnUKFn2Pp4Q8mDkT7/preview" 
+                    className="absolute inset-0 w-full h-full border-0"
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                    title="Vídeo de Apresentação OAB Hackeada"
+                  />
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -130,7 +173,7 @@ export default function App() {
                 CONTEÚDO COMPLETO
               </span>
               <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
-                O QUE VOCÊ RECEBE NO <span className="text-[#d7ff00]">OAB HACKEADA</span>
+                O QUE VOCÊ RECEBE NO <span className="bg-[#d7ff00] text-black px-4 py-1.5 inline-block mx-1">OAB HACKEADA</span>
               </h2>
             </div>
           </FadeIn>
@@ -238,7 +281,7 @@ export default function App() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <FadeIn>
               <h2 className="font-display text-4xl md:text-6xl font-extrabold text-brand-primary leading-tight">
-                PARA QUEM É O OAB HACKEADA:
+                PARA QUEM É O <span className="bg-[#d7ff00] text-black px-4 py-1.5 inline-block mx-1">OAB HACKEADA</span>:
               </h2>
             </FadeIn>
             
@@ -470,7 +513,7 @@ export default function App() {
       {/* Footer */}
       <footer className="py-12 border-t border-white/5 text-center px-6">
         <div className="container mx-auto">
-          <div className="font-display font-bold text-2xl text-brand-primary mb-4">OAB <span className="text-white">HACKEADA</span></div>
+          <div className="bg-[#d7ff00] text-black font-display font-black text-xl md:text-2xl px-4 py-1.5 inline-block mb-4">OAB HACKEADA</div>
           <p className="text-gray-500 mb-6">© 2026 — Todos os direitos reservados.</p>
           <div className="flex justify-center gap-8 text-sm text-gray-600">
             <a href="#" className="hover:text-white transition-colors">Termos de Uso</a>
