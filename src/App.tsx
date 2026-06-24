@@ -72,9 +72,9 @@ export default function App() {
                 <div className="max-w-[280px] sm:max-w-[320px] mx-auto p-2.5 bg-white/5 border border-white/10 rounded-[2.5rem] shadow-2xl">
                   <div className="relative aspect-[9/16] w-full rounded-[2rem] overflow-hidden bg-black">
                     <iframe 
-                      src="https://drive.google.com/file/d/1GtURxCVFlquxX3GDnUKFn2Pp4Q8mDkT7/preview" 
-                      style={{ top: "-5%", height: "110%" }}
-                      className="absolute left-0 w-full border-0"
+                      src="https://drive.google.com/file/d/1GtURxCVFlquxX3GDnUKFn2Pp4Q8mDkT7/preview?autoplay=1&modestbranding=1" 
+                      style={{ top: "-5%", left: "-5%", width: "110%", height: "110%" }}
+                      className="absolute border-0"
                       allow="autoplay; encrypted-media"
                       allowFullScreen
                       title="Vídeo de Apresentação OAB Hackeada"
@@ -113,9 +113,9 @@ export default function App() {
               >
                 <div className="relative aspect-[9/16] w-full rounded-[2rem] overflow-hidden bg-black shadow-inner">
                   <iframe 
-                    src="https://drive.google.com/file/d/1GtURxCVFlquxX3GDnUKFn2Pp4Q8mDkT7/preview" 
-                    style={{ top: "-5%", height: "110%" }}
-                    className="absolute left-0 w-full border-0"
+                    src="https://drive.google.com/file/d/1GtURxCVFlquxX3GDnUKFn2Pp4Q8mDkT7/preview?autoplay=1&modestbranding=1" 
+                    style={{ top: "-5%", left: "-5%", width: "110%", height: "110%" }}
+                    className="absolute border-0"
                     allow="autoplay; encrypted-media"
                     allowFullScreen
                     title="Vídeo de Presentation OAB Hackeada"
