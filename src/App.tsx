@@ -61,22 +61,14 @@ export default function App() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+              className="mt-6"
             >
-              <a 
-                href="#oferta" 
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("oferta")?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="bg-brand-accent hover:opacity-95 active:scale-[0.98] transition-all px-5 sm:px-8 py-4 sm:py-5 rounded-2xl font-extrabold flex items-center justify-center gap-2 text-base sm:text-lg md:text-xl shadow-2xl shadow-brand-accent/30 group w-full sm:w-auto text-center leading-tight tracking-wide"
-              >
-                <span className="truncate sm:overflow-visible">QUERO MEU ACESSO AGORA</span>
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform shrink-0" />
-              </a>
+              <h2 className="text-2xl md:text-4xl font-display font-black tracking-wider text-[#d7ff00] uppercase inline-block border-b-4 border-[#d7ff00] pb-2">
+                DESCUBRA O PADRÃO AGORA!
+              </h2>
             </motion.div>
           </div>
         </div>
