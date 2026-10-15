@@ -449,16 +449,30 @@ export default function App() {
                     <CheckCircle2 className="w-6 h-6 shrink-0" />
                     +500 Questões Comentadas (Matérias Incluídas)
                   </h3>
-                  <div className="grid grid-cols-2 gap-3 text-sm font-semibold">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-sm font-semibold">
                     {[
-                      "Ética profissional", "Dir. Constitucional",
-                      "Direito Civil", "Direito Penal",
-                      "Dir. do Trabalho", "Processual Civil",
-                      "Processual Penal", "Dir. Administrativo",
-                      "Dir. Tributário", "Dir. Empresarial"
+                      "Direito Administrativo 2",
+                      "Direito Administrativo",
+                      "Direito Ambiental",
+                      "Direito Civil",
+                      "Direito Constitucional",
+                      "Direito do Consumidor",
+                      "Direito do Trabalho",
+                      "Direito Empresarial",
+                      "Direito Internacional",
+                      "Direito Penal",
+                      "Direito Processual Civil",
+                      "Direito Processual Penal",
+                      "Direito Tributário 2",
+                      "Direito Tributário",
+                      "Direitos Humanos",
+                      "ECA",
+                      "Ética Profissional",
+                      "Filosofia do Direito",
+                      "Processo do Trabalho"
                     ].map((materia, idx) => (
-                      <span key={idx} className="bg-brand-dark/10 px-3 py-1.5 rounded-lg text-brand-dark text-left">
-                        ✔ {materia}
+                      <span key={idx} className="bg-brand-dark/10 px-3 py-1.5 rounded-lg text-brand-dark text-left flex items-center gap-1.5">
+                        <span className="text-brand-dark font-bold">✔</span> {materia}
                       </span>
                     ))}
                   </div>
@@ -676,7 +690,7 @@ export default function App() {
                       <div>
                         <p className="font-bold text-white">+500 Questões Comentadas (Matérias Incluídas):</p>
                         <p className="text-gray-400 text-xs md:text-sm mt-1 leading-relaxed">
-                          Ética profissional, Dir. Constitucional, Direito Civil, Direito Penal, Dir. do Trabalho, Processual Civil, Processual Penal, Dir. Administrativo, Dir. Tributário, Dir. Empresarial.
+                          Direito Administrativo 2, Direito Administrativo, Direito Ambiental, Direito Civil, Direito Constitucional, Direito do Consumidor, Direito do Trabalho, Direito Empresarial, Direito Internacional, Direito Penal, Direito Processual Civil, Direito Processual Penal, Direito Tributário 2, Direito Tributário, Direitos Humanos, ECA, Ética Profissional, Filosofia do Direito, Processo do Trabalho.
                         </p>
                       </div>
                     </div>
