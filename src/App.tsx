@@ -309,24 +309,32 @@ export default function App() {
 
           <div className="h-px bg-brand-dark/10 w-full" />
 
-          {/* Package R$ 37 */}
+          {/* Package R$ 47 */}
           <div className="grid lg:grid-cols-5 gap-12 items-start">
             <div className="lg:col-span-3 space-y-8">
               <FadeIn>
                 <div className="text-center mb-8">
-                  <span className="bg-brand-dark text-brand-primary text-xs md:text-sm font-extrabold uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 inline-block">
+                  <motion.span 
+                    animate={{ scale: [1, 1.06, 1] }}
+                    transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                    className="bg-brand-dark text-brand-primary text-xs md:text-sm font-extrabold uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 inline-flex items-center gap-2 shadow-lg border border-brand-primary/30"
+                  >
+                    <span className="relative flex h-2.5 w-2.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-primary opacity-80"></span>
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-primary"></span>
+                    </span>
                     PACOTE COMPLETO
-                  </span>
+                  </motion.span>
                   <h2 className="font-display text-3xl md:text-4xl font-extrabold italic text-brand-dark">
                     O que você vai receber no pacote completo:
                   </h2>
                 </div>
                 
-                {/* 500 Questões Comentadas */}
+                {/* +500 Questões Comentadas */}
                 <div className="bg-brand-dark/5 p-6 rounded-2xl mb-6 border border-brand-dark/10">
                   <h3 className="font-bold text-xl mb-4 flex items-center gap-2 text-brand-dark">
                     <CheckCircle2 className="w-6 h-6 shrink-0" />
-                    500 Questões Comentadas (Matérias Incluídas)
+                    +500 Questões Comentadas (Matérias Incluídas)
                   </h3>
                   <div className="grid grid-cols-2 gap-3 text-sm font-semibold">
                     {[
@@ -379,22 +387,46 @@ export default function App() {
 
             <div className="lg:col-span-2">
               <FadeIn delay={0.2}>
-                <div className="bg-brand-dark p-8 md:p-12 rounded-[2rem] text-center text-white shadow-2xl relative border-2 border-brand-accent/20">
-                  <div className="absolute -top-4 -right-4 bg-brand-accent text-white px-4 py-2 rounded-xl text-sm font-bold rotate-12 shadow-lg z-20">MAIS POPULAR</div>
-                  <span className="text-gray-400 line-through text-xl block mb-2">DE R$197,00</span>
-                  <div className="flex justify-center items-start mb-6">
-                    <span className="text-3xl font-bold mt-2">R$</span>
-                    <span className="text-8xl md:text-9xl font-extrabold text-brand-primary leading-none">37</span>
-                  </div>
-                  <p className="text-gray-400 mb-8 font-medium">Pagamento Único — Completo</p>
-                  <a 
-                    href="https://pay.wiapy.com/ZKQs_w7h-E" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="block w-full bg-brand-accent hover:opacity-95 active:scale-[0.98] transition-all py-4 sm:py-5 rounded-2xl font-black text-lg sm:text-xl shadow-xl shadow-brand-accent/20 uppercase tracking-wider text-center"
+                <div className="relative">
+                  {/* Aura / Halo pulsante atrás do card */}
+                  <div className="absolute -inset-1.5 rounded-[2.3rem] bg-linear-to-r from-brand-accent via-brand-primary to-brand-accent opacity-40 blur-lg animate-pulse pointer-events-none -z-10" />
+
+                  <motion.div 
+                    animate={{ 
+                      scale: [1, 1.025, 1],
+                      boxShadow: [
+                        "0 20px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 90, 31, 0.35)",
+                        "0 25px 45px -10px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 90, 31, 0.75)",
+                        "0 20px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 90, 31, 0.35)"
+                      ]
+                    }}
+                    transition={{ 
+                      repeat: Infinity, 
+                      duration: 2.2, 
+                      ease: "easeInOut" 
+                    }}
+                    className="bg-brand-dark p-8 md:p-12 rounded-[2rem] text-center text-white relative border-2 border-brand-accent"
                   >
-                    QUERO MINHA APROVAÇÃO
-                  </a>
+                    <div className="absolute -top-4 -right-4 bg-brand-accent text-white px-4 py-2 rounded-xl text-sm font-bold rotate-12 shadow-lg z-20 animate-bounce">
+                      MAIS POPULAR
+                    </div>
+                    <span className="text-gray-400 line-through text-xl block mb-2">DE R$197,00</span>
+                    <div className="flex justify-center items-start mb-6">
+                      <span className="text-3xl font-bold mt-2">R$</span>
+                      <span className="text-8xl md:text-9xl font-extrabold text-brand-primary leading-none">47</span>
+                    </div>
+                    <p className="text-gray-400 mb-8 font-medium">Pagamento Único — Completo</p>
+                    <motion.a 
+                      animate={{ scale: [1, 1.04, 1] }}
+                      transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
+                      href="https://pay.wiapy.com/ZKQs_w7h-E" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="block w-full bg-brand-accent hover:opacity-95 active:scale-[0.98] transition-all py-4 sm:py-5 rounded-2xl font-black text-lg sm:text-xl shadow-xl shadow-brand-accent/40 uppercase tracking-wider text-center cursor-pointer"
+                    >
+                      QUERO MINHA APROVAÇÃO
+                    </motion.a>
+                  </motion.div>
                 </div>
               </FadeIn>
             </div>
@@ -522,14 +554,14 @@ export default function App() {
 
                 {/* Benefits List */}
                 <div className="space-y-4 bg-white/5 p-6 rounded-2xl border border-white/5 mb-8">
-                  <h4 className="font-bold text-[#d7ff00] text-sm uppercase tracking-wider mb-2">🎁 Benefícios Inclusos (Os mesmos do pacote de R$ 37):</h4>
+                  <h4 className="font-bold text-[#d7ff00] text-sm uppercase tracking-wider mb-2">🎁 Benefícios Inclusos (Os mesmos do pacote de R$ 47):</h4>
                   
                   <div className="space-y-4 text-sm md:text-base">
                     {/* Item 1 */}
                     <div className="flex items-start gap-3">
                       <CheckCircle2 className="w-5 h-5 text-[#d7ff00] shrink-0 mt-0.5" />
                       <div>
-                        <p className="font-bold text-white">500 Questões Comentadas (Matérias Incluídas):</p>
+                        <p className="font-bold text-white">+500 Questões Comentadas (Matérias Incluídas):</p>
                         <p className="text-gray-400 text-xs md:text-sm mt-1 leading-relaxed">
                           Ética profissional, Dir. Constitucional, Direito Civil, Direito Penal, Dir. do Trabalho, Processual Civil, Processual Penal, Dir. Administrativo, Dir. Tributário, Dir. Empresarial.
                         </p>
@@ -572,7 +604,7 @@ export default function App() {
                 <div className="text-center space-y-6">
                   <div>
                     <span className="text-gray-500 line-through text-sm md:text-base mr-3">DE R$ 197,00</span>
-                    <span className="text-gray-400 line-through text-xs md:text-sm mr-3">OU R$ 37,00</span>
+                    <span className="text-gray-400 line-through text-xs md:text-sm mr-3">OU R$ 47,00</span>
                     <div className="flex justify-center items-start mt-2">
                       <span className="text-xl md:text-2xl font-bold mt-1 text-[#d7ff00]">R$</span>
                       <span className="text-6xl md:text-7xl font-extrabold text-[#d7ff00] leading-none">27</span>
@@ -582,14 +614,16 @@ export default function App() {
 
                   <div className="space-y-4">
                     {/* Primary Button for discount */}
-                    <a 
+                    <motion.a 
+                      animate={{ scale: [1, 1.03, 1] }}
+                      transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
                       href="https://pay.wiapy.com/rg85iH1OSm" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="block w-full bg-[#d7ff00] text-brand-dark hover:opacity-95 active:scale-[0.98] transition-all py-4 sm:py-5 rounded-2xl font-black text-lg sm:text-xl shadow-xl shadow-[#d7ff00]/20 uppercase tracking-wider text-center"
+                      className="block w-full bg-[#d7ff00] text-brand-dark hover:opacity-95 active:scale-[0.98] transition-all py-4 sm:py-5 rounded-2xl font-black text-lg sm:text-xl shadow-xl shadow-[#d7ff00]/20 uppercase tracking-wider text-center cursor-pointer"
                     >
                       QUERO O PACOTE COMPLETO POR R$ 27
-                    </a>
+                    </motion.a>
 
                     {/* Basic option */}
                     <a 
