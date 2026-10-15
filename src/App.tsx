@@ -1,6 +1,25 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { CheckCircle2, ChevronRight, GraduationCap, BookOpen, Target, ArrowRight, ShieldCheck, X } from "lucide-react";
+import { CheckCircle2, ChevronRight, GraduationCap, BookOpen, Target, ArrowRight, ShieldCheck, X, ShoppingBag } from "lucide-react";
+
+const PURCHASERS = [
+  { name: "Lucas Mendes", location: "São Paulo - SP", time: "há 2 minutos" },
+  { name: "Mariana Siqueira", location: "Belo Horizonte - MG", time: "há 1 minuto" },
+  { name: "Rodrigo Alves", location: "Rio de Janeiro - RJ", time: "há 3 minutos" },
+  { name: "Camila Santos", location: "Curitiba - PR", time: "há 4 minutos" },
+  { name: "Felipe Costa", location: "Brasília - DF", time: "há 2 minutos" },
+  { name: "Juliana Lima", location: "Salvador - BA", time: "há 1 minuto" },
+  { name: "Gabriel Ribeiro", location: "Porto Alegre - RS", time: "há 5 minutos" },
+  { name: "Beatriz Souza", location: "Campinas - SP", time: "há 2 minutos" },
+  { name: "Matheus Oliveira", location: "Goiânia - GO", time: "há 3 minutos" },
+  { name: "Fernanda Rocha", location: "Fortaleza - CE", time: "há 1 minuto" },
+  { name: "Bruno Nogueira", location: "Florianópolis - SC", time: "há 4 minutos" },
+  { name: "Larissa Ferreira", location: "Recife - PE", time: "há 2 minutos" },
+  { name: "Thiago Martins", location: "Vitória - ES", time: "há 3 minutos" },
+  { name: "Amanda Barbosa", location: "Manaus - AM", time: "há 6 minutos" },
+  { name: "Rafael Duarte", location: "Santos - SP", time: "há 2 minutos" },
+  { name: "Letícia Cardoso", location: "Ribeirão Preto - SP", time: "há 1 minuto" },
+];
 
 const FadeIn = ({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string; key?: React.Key }) => (
   <motion.div
@@ -16,9 +35,103 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: ReactNode; 
 
 export default function App() {
   const [showOfferModal, setShowOfferModal] = useState(false);
+  const [notification, setNotification] = useState<{
+    id: number;
+    name: string;
+    location: string;
+    time: string;
+  } | null>(null);
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+    let hideTimeoutId: NodeJS.Timeout;
+
+    const showRandomNotification = () => {
+      const randomPurchaser = PURCHASERS[Math.floor(Math.random() * PURCHASERS.length)];
+      setNotification({
+        id: Date.now(),
+        ...randomPurchaser,
+      });
+
+      // Fica visível por 5 segundos
+      hideTimeoutId = setTimeout(() => {
+        setNotification(null);
+        // Delay de 9 segundos até a próxima notificação aleatória
+        timeoutId = setTimeout(showRandomNotification, 9000);
+      }, 5000);
+    };
+
+    // Delay inicial de 9 segundos para exibir a primeira notificação
+    timeoutId = setTimeout(showRandomNotification, 9000);
+
+    return () => {
+      clearTimeout(timeoutId);
+      clearTimeout(hideTimeoutId);
+    };
+  }, []);
 
   return (
-    <div className="bg-brand-dark text-white min-h-screen font-sans selection:bg-brand-primary selection:text-brand-dark">
+    <div className="bg-brand-dark text-white min-h-screen font-sans selection:bg-brand-primary selection:text-brand-dark relative">
+      {/* Notificação Flutuante de Compra - Canto Superior Direito */}
+      <div className="fixed top-4 right-4 sm:top-6 sm:right-6 z-50 pointer-events-none max-w-sm w-[calc(100vw-2rem)] sm:w-auto">
+        <AnimatePresence>
+          {notification && (
+            <motion.div
+              key={notification.id}
+              initial={{ opacity: 0, y: -20, x: 25, scale: 0.92 }}
+              animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -15, scale: 0.9, transition: { duration: 0.25 } }}
+              transition={{ type: "spring", stiffness: 420, damping: 26 }}
+              className="pointer-events-auto bg-[#13151b]/95 backdrop-blur-md border border-[#d7ff00]/40 rounded-2xl p-3.5 sm:p-4 shadow-2xl shadow-black/80 flex items-start gap-3 relative overflow-hidden"
+            >
+              {/* Barra luminosa lateral */}
+              <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-[#d7ff00] to-emerald-400" />
+              
+              {/* Ícone de sacola com radar ativo */}
+              <div className="relative shrink-0 mt-0.5">
+                <div className="w-10 h-10 rounded-full bg-[#d7ff00]/15 border border-[#d7ff00]/40 flex items-center justify-center text-[#d7ff00]">
+                  <ShoppingBag className="w-5 h-5 text-[#d7ff00]" />
+                </div>
+                <span className="absolute -bottom-0.5 -right-0.5 flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                </span>
+              </div>
+
+              {/* Informações da compra */}
+              <div className="flex-1 pr-2">
+                <div className="flex items-center gap-1.5 mb-0.5">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1">
+                    <CheckCircle2 className="w-3 h-3 text-emerald-400" /> Compra Confirmada
+                  </span>
+                  <span className="text-gray-500 text-[10px]">• {notification.time}</span>
+                </div>
+
+                <p className="text-sm font-bold text-white leading-tight">
+                  {notification.name}
+                  <span className="text-xs font-normal text-gray-400 block sm:inline sm:ml-1">
+                    ({notification.location})
+                  </span>
+                </p>
+
+                <p className="text-xs text-gray-300 mt-1">
+                  Acabou de comprar o <span className="font-extrabold text-[#d7ff00]">Pacote Completo (R$ 47)</span>
+                </p>
+              </div>
+
+              {/* Botão de fechar */}
+              <button
+                onClick={() => setNotification(null)}
+                className="text-gray-400 hover:text-white transition-colors p-1 -mr-1 -mt-1 rounded-lg hover:bg-white/10 cursor-pointer"
+                aria-label="Fechar notificação"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         {/* Background Image with Overlay */}
