@@ -1,6 +1,77 @@
 import React, { ReactNode, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { CheckCircle2, ChevronRight, GraduationCap, BookOpen, Target, ArrowRight, ShieldCheck, X, ShoppingBag } from "lucide-react";
+import { CheckCircle2, ChevronRight, ChevronLeft, GraduationCap, BookOpen, Target, ArrowRight, ShieldCheck, X, ShoppingBag, Gift, Sparkles, Calendar, FileText } from "lucide-react";
+
+const CAROUSEL_IMAGES = [
+  {
+    src: "https://i.ibb.co/ZtngG03/Captura-de-tela-2026-11-12-083021.png",
+    alt: "Amostra do Material 1",
+    link: "https://ibb.co/5tNjGPd"
+  },
+  {
+    src: "https://i.ibb.co/xKtBJ76Q/Captura-de-tela-2026-11-12-083052.png",
+    alt: "Amostra do Material 2",
+    link: "https://ibb.co/0pR6hGr3"
+  },
+  {
+    src: "https://i.ibb.co/DPNY1kWL/Captura-de-tela-2026-11-12-083112.png",
+    alt: "Amostra do Material 3",
+    link: "https://ibb.co/nqTBwfmR"
+  },
+  {
+    src: "https://i.ibb.co/S7r2n1Bj/Captura-de-tela-2026-11-12-083137.png",
+    alt: "Amostra do Material 4",
+    link: "https://ibb.co/1J63qpTg"
+  },
+  {
+    src: "https://i.ibb.co/B2pk8GtQ/Captura-de-tela-2026-11-12-083206.png",
+    alt: "Amostra do Material 5",
+    link: "https://ibb.co/SwjSqcPM"
+  }
+];
+
+function AutomaticCarousel() {
+  // Duplicando as imagens para fluxo contínuo infinito e perfeito
+  const duplicatedImages = [
+    ...CAROUSEL_IMAGES,
+    ...CAROUSEL_IMAGES,
+    ...CAROUSEL_IMAGES,
+    ...CAROUSEL_IMAGES
+  ];
+
+  return (
+    <div className="relative w-full overflow-hidden py-4 my-6">
+      {/* Esfumaçado suave nas extremidades para entrada/saída elegante */}
+      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-r from-brand-dark to-transparent z-10" />
+      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-l from-brand-dark to-transparent z-10" />
+
+      {/* Imagens passando continuamente uma do lado da outra */}
+      <div className="animate-marquee-infinite flex gap-6 items-center">
+        {duplicatedImages.map((img, index) => (
+          <div
+            key={index}
+            className="shrink-0 transition-transform duration-300 hover:scale-[1.03] cursor-pointer"
+          >
+            <a
+              href={img.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+              title="Amostra do material - clique para ampliar"
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                className="h-[280px] sm:h-[360px] md:h-[420px] w-auto max-w-none rounded-2xl shadow-2xl shadow-black/80 object-contain hover:ring-2 hover:ring-[#d7ff00]/60 transition-all duration-300"
+              />
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const PURCHASERS = [
   { name: "Lucas Mendes", location: "São Paulo - SP", time: "há 2 minutos" },
@@ -82,47 +153,47 @@ export default function App() {
               animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
               exit={{ opacity: 0, y: -15, scale: 0.9, transition: { duration: 0.25 } }}
               transition={{ type: "spring", stiffness: 420, damping: 26 }}
-              className="pointer-events-auto bg-[#13151b]/95 backdrop-blur-md border border-[#d7ff00]/40 rounded-2xl p-3.5 sm:p-4 shadow-2xl shadow-black/80 flex items-start gap-3 relative overflow-hidden"
+              className="pointer-events-auto bg-emerald-800/95 backdrop-blur-md border-2 border-yellow-400/60 rounded-2xl p-3.5 sm:p-4 shadow-2xl shadow-black/70 flex items-start gap-3 relative overflow-hidden"
             >
-              {/* Barra luminosa lateral */}
-              <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-[#d7ff00] to-emerald-400" />
+              {/* Barra luminosa lateral em amarelo */}
+              <div className="absolute top-0 left-0 bottom-0 w-1.5 bg-gradient-to-b from-yellow-300 via-yellow-400 to-amber-300" />
               
-              {/* Ícone de sacola com radar ativo */}
+              {/* Ícone de sacola em amarelo com radar ativo */}
               <div className="relative shrink-0 mt-0.5">
-                <div className="w-10 h-10 rounded-full bg-[#d7ff00]/15 border border-[#d7ff00]/40 flex items-center justify-center text-[#d7ff00]">
-                  <ShoppingBag className="w-5 h-5 text-[#d7ff00]" />
+                <div className="w-10 h-10 rounded-full bg-emerald-950/70 border border-yellow-400/50 flex items-center justify-center text-yellow-300 shadow-inner">
+                  <ShoppingBag className="w-5 h-5 text-yellow-300" />
                 </div>
                 <span className="absolute -bottom-0.5 -right-0.5 flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-300 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-yellow-400"></span>
                 </span>
               </div>
 
-              {/* Informações da compra */}
+              {/* Informações da compra em branco e amarelo */}
               <div className="flex-1 pr-2">
                 <div className="flex items-center gap-1.5 mb-0.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1">
-                    <CheckCircle2 className="w-3 h-3 text-emerald-400" /> Compra Confirmada
+                  <span className="text-[11px] font-extrabold uppercase tracking-wider text-yellow-300 flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-yellow-300" /> Compra Confirmada
                   </span>
-                  <span className="text-gray-500 text-[10px]">• {notification.time}</span>
+                  <span className="text-yellow-100/80 text-[10px] font-medium">• {notification.time}</span>
                 </div>
 
-                <p className="text-sm font-bold text-white leading-tight">
+                <p className="text-sm font-extrabold text-white leading-tight">
                   {notification.name}
-                  <span className="text-xs font-normal text-gray-400 block sm:inline sm:ml-1">
+                  <span className="text-xs font-semibold text-yellow-200 block sm:inline sm:ml-1.5">
                     ({notification.location})
                   </span>
                 </p>
 
-                <p className="text-xs text-gray-300 mt-1">
-                  Acabou de comprar o <span className="font-extrabold text-[#d7ff00]">Pacote Completo (R$ 47)</span>
+                <p className="text-xs text-white/95 mt-1 font-medium">
+                  Acabou de comprar o <span className="font-black text-yellow-300 underline decoration-yellow-400/50">Pacote Completo (R$ 47)</span>
                 </p>
               </div>
 
               {/* Botão de fechar */}
               <button
                 onClick={() => setNotification(null)}
-                className="text-gray-400 hover:text-white transition-colors p-1 -mr-1 -mt-1 rounded-lg hover:bg-white/10 cursor-pointer"
+                className="text-white/80 hover:text-yellow-300 transition-colors p-1 -mr-1 -mt-1 rounded-lg hover:bg-emerald-900/50 cursor-pointer"
                 aria-label="Fechar notificação"
               >
                 <X className="w-4 h-4" />
@@ -240,43 +311,10 @@ export default function App() {
             </div>
           </FadeIn>
 
-          {/* Main Deliverables Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-            {[
-              {
-                emoji: "📚",
-                title: "500+ Questões Comentadas",
-                description: "Separadas por matéria e nível de dificuldade"
-              },
-              {
-                emoji: "✅",
-                title: "Gabarito 100% Comentado",
-                description: "Entenda por que cada alternativa está certa ou errada"
-              },
-              {
-                emoji: "💡",
-                title: "Dicas de Banca FGV",
-                description: "Pegadinhas que a banca repete em toda prova"
-              },
-              {
-                emoji: "📋",
-                title: "Simulados Prontos",
-                description: "No formato real da prova pra treinar cronometrada"
-              }
-            ].map((item, i) => (
-              <FadeIn key={i} delay={0.1 * i}>
-                <div className="bg-white/5 border border-white/10 p-8 rounded-3xl h-full flex flex-col justify-between hover:border-[#d7ff00]/30 transition-all duration-300">
-                  <div>
-                    <span className="text-4xl mb-4 block" role="img" aria-label={item.title}>
-                      {item.emoji}
-                    </span>
-                    <h3 className="font-display font-bold text-xl text-white mb-2">{item.title}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">{item.description}</p>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+          {/* Carrossel Automático de Amostras do Material */}
+          <FadeIn>
+            <AutomaticCarousel />
+          </FadeIn>
 
           {/* Sendo Elas Grid Header */}
           <FadeIn>
@@ -321,6 +359,88 @@ export default function App() {
               </FadeIn>
             ))}
           </div>
+
+          {/* BÔNUS EXCLUSIVO PARA VOCÊ Section */}
+          <FadeIn>
+            <div className="mt-20 pt-16 border-t border-white/10 max-w-5xl mx-auto">
+              <div className="text-center mb-12">
+                <span className="bg-[#d7ff00] text-black font-extrabold text-xs md:text-sm tracking-widest uppercase px-4 py-1.5 rounded-full shadow-lg inline-flex items-center gap-1.5 mb-4">
+                  <Gift className="w-4 h-4 text-black" /> LIBERADO EXCLUSIVAMENTE HOJE
+                </span>
+                <h3 className="font-display text-3xl md:text-5xl font-black text-white leading-tight uppercase">
+                  + <span className="text-[#d7ff00]">BÔNUS EXCLUSIVO</span> PARA VOCÊ :
+                </h3>
+                <p className="text-gray-300 text-base md:text-lg mt-3 max-w-2xl mx-auto">
+                  Materiais complementares estratégicos desenvolvidos para acelerar a sua aprovação na 1ª fase da OAB sem custo adicional.
+                </p>
+              </div>
+
+              {/* Grid dos 4 Bônus em Super Destaque */}
+              <div className="grid sm:grid-cols-2 gap-6">
+                {[
+                  {
+                    tag: "BÔNUS #1",
+                    title: "Cronograma 60 dias até a prova",
+                    desc: "Passo a passo diário estruturado para você estudar o que realmente cai na FGV, mesmo tendo pouco tempo na rotina.",
+                    icon: Calendar,
+                    highlight: "GRÁTIS HOJE"
+                  },
+                  {
+                    tag: "BÔNUS #2",
+                    title: "Resumão Top 10 Assuntos mais cobrados",
+                    desc: "Direto ao ponto com os 10 tópicos estatisticamente mais repetidos nas provas passadas para garantir pontos cruciais.",
+                    icon: FileText,
+                    highlight: "GRÁTIS HOJE"
+                  },
+                  {
+                    tag: "BÔNUS #3",
+                    title: "Modelo de Peça Profissional",
+                    desc: "Estrutura esquematizada pronta para fixar o raciocínio jurídico e a aplicação prática das matérias de forma visual.",
+                    icon: BookOpen,
+                    highlight: "GRÁTIS HOJE"
+                  },
+                  {
+                    tag: "BÔNUS #4",
+                    title: "Guia anti pegadinha FGV",
+                    desc: "As armadilhas e pegadinhas clássicas que a banca FGV mais usa para reprovar candidatos desatentos desvendadas.",
+                    icon: ShieldCheck,
+                    highlight: "GRÁTIS HOJE"
+                  }
+                ].map((bonus, i) => (
+                  <motion.div
+                    key={i}
+                    whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                    className="relative bg-gradient-to-br from-white/10 via-white/5 to-transparent border-2 border-[#d7ff00]/40 rounded-3xl p-6 sm:p-7 shadow-xl shadow-black/60 overflow-hidden group hover:border-[#d7ff00] transition-all duration-300"
+                  >
+                    {/* Efeito Glow no fundo */}
+                    <div className="absolute -top-12 -right-12 w-32 h-32 bg-[#d7ff00]/10 rounded-full blur-2xl group-hover:bg-[#d7ff00]/25 transition-all pointer-events-none" />
+
+                    <div className="flex items-start justify-between gap-4 mb-4">
+                      <div className="w-12 h-12 rounded-2xl bg-[#d7ff00] text-black flex items-center justify-center shrink-0 shadow-lg shadow-[#d7ff00]/20">
+                        <bonus.icon className="w-6 h-6 stroke-[2.5]" />
+                      </div>
+                      <div className="flex flex-col items-end">
+                        <span className="text-[11px] font-black uppercase tracking-wider text-black bg-[#d7ff00] px-3 py-1 rounded-full">
+                          {bonus.tag}
+                        </span>
+                        <span className="text-[10px] font-bold text-emerald-400 mt-1 uppercase tracking-wide flex items-center gap-1">
+                          <CheckCircle2 className="w-3 h-3 text-emerald-400" /> {bonus.highlight}
+                        </span>
+                      </div>
+                    </div>
+
+                    <h4 className="font-display font-extrabold text-xl sm:text-2xl text-white group-hover:text-[#d7ff00] transition-colors leading-snug mb-2">
+                      {bonus.title}
+                    </h4>
+
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      {bonus.desc}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
